@@ -7,6 +7,7 @@ $(document).ready(() => {
   function generateTweets(array){
     const $tweets = array.map((tweet) => {
       //added an id of tweet instead of div by itself
+      console.log(tweet.created_at, "CHECK")
       const $tweet = $('<div class=tweet></div>');
       const $user = $(`<div id=user>@${tweet.user}</div>`);
       const $message = $(`<p></p>`);
@@ -18,7 +19,7 @@ $(document).ready(() => {
       //$message.append(tweet.message);
       //$body.append($user);
       //$body.append($message);
-      const text = ` ${tweet.message} ${tweet.created_at}`;
+      const text = `${tweet.message} ${moment().startOf(tweet.created_at).fromNow()}`;
       //make each user clickable
       console.log($user, "USER");
       //create a click function for user
@@ -52,6 +53,14 @@ $(document).ready(() => {
     $($tweetsDiv).append(generateTweets(streams.home))
   })
   //create a button that allows the user to tweet
-  // const $createTweet = $(`<button>Create Tweet</button`)
-  // $body.append($createTweet);
+  const $makeTweetButton = $(`<button>Add Tweet</button>`);
+  //create a form that allows the user to text
+  const $form = $("<form></form>");
+  $form.append('<input type="text" value="Create Tweet">');
+  $body.prepend($form);
+  $body.prepend($makeTweetButton);
+  /*now we need to create a function that when the user inputs into the form,
+    once the user clicks add Tweet button, the content within the form is added to the tweets
+*/  
+
 });
