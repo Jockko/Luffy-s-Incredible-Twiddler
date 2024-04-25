@@ -79,7 +79,7 @@ $body.css("background-attachment", "fixed");
 $body.css("background-size", "cover");
 let $header = $(`<h1>Twiddler</h1>`);
 $header.css("color", "red");
-$header.css("text-align", "center")
+//$header.css("text-align", "center")
 $body.prepend($header)
 //$body.css(`background-size: 100vw 100vh`);
 
